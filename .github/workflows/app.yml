@@ -36,11 +36,13 @@ jobs:
         with:
           dependency-graph: generate-and-submit
           build-scan-publish: true
-          build-scan-terms-of-use-url: "https://gradle.com/terms-of-service"
+          build-scan-terms-of-use-url: "https://gradle.com"
           build-scan-terms-of-use-agree: "yes"
 
-      # ТУТ ИСПРАВЛЕНО: Даем лисичке права, чтобы не было ошибки 126
-- name: Build with Gradle
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build with Gradle
         run: ./gradlew assembleDebug
 
       - name: Upload APK
