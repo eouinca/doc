@@ -13,9 +13,6 @@ This method has very big disadvantages:
 
 doc uses a completely different way. See detailed description below.
 
-## User guide & Download
-
-<https://doc.rikka.app/>
 
 ## How does doc work?
 
