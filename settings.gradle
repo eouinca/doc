@@ -68,8 +68,8 @@ project(':rish').projectDir = file("$root${File.separator}rish")
 include ':shared'
 project(':shared').projectDir = file("$root${File.separator}shared")
 
-// include ':api'
-// project(':api').projectDir = file("$root${File.separator}api")
+ include ':api'
+ project(':api').projectDir = file("$root${File.separator}api")
 
 include ':server-shared'
 project(':server-shared').projectDir = file("$root${File.separator}server-shared")
