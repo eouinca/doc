@@ -86,43 +86,7 @@ materialThemeBuilder {
     generateTextColors = true
 }
 
-def collapseReleaseResourceNames = task('collapseReleaseResourceNames').doLast {
-    def aapt2 = Paths.get(project.android.sdkDirectory.path, 'build-tools', project.android.buildToolsVersion, 'aapt2')
-    def zip = Paths.get(project.buildDir.path, 'intermediates',
-            'optimized_processed_res', 'release', 'optimizeReleaseResources', 'resources-release-optimize.ap_')
-    def optimized = new File("${zip}.opt")
-    def cmd = exec {
-        commandLine aapt2, 'optimize', '--collapse-resource-names',
-                '--resources-config-path', 'aapt2-resources.cfg',
-                '-o', optimized, zip
-        ignoreExitValue false
-    }
-    if (cmd.exitValue == 0) {
-        delete(zip)
-        optimized.renameTo("$zip")
-    }
-}
-
-afterEvaluate {
-    tasks.getByName('optimizeReleaseResources').finalizedBy(collapseReleaseResourceNames)
-    tasks.getByName('preReleaseBuild').dependsOn(':shell:assembleRelease')
-    tasks.getByName('preDebugBuild').dependsOn(':shell:assembleDebug')
-}
-
-android.applicationVariants.configureEach { variant ->
-    variant.outputs.configureEach {
-        outputFileName = "doc-v${variant.versionName}-${variant.name}.apk"
-
-        variant.assembleProvider.get().doLast {
-            def outDir = new File(rootDir, "out")
-            def mappingDir = new File(outDir, "mapping").absolutePath
-            def apkDir = new File(outDir, "apk").absolutePath
-
-            if (variant.getBuildType().isMinifyEnabled()) {
-                copy {
-                    from variant.mappingFileProvider.get()
-                    into mappingDir
-                    rename { String fileName -> "mapping-${variant.versionName}.txt" }
+def 
                 }
                 copy {
                     from outputFile
