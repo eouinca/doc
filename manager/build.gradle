@@ -149,7 +149,7 @@ dependencies {
     implementation project(':rish')
     implementation project(':starter')
     implementation project(':api')
-    implementation project(':provider')
+    
 
     implementation libs.hidden.compat
     compileOnly libs.hidden.stub
