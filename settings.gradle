@@ -62,9 +62,6 @@ if (propFile.canRead()) {
 include ':aidl'
 project(':aidl').projectDir = file("$root${File.separator}aidl")
 
-// include ':rish'
-project(':rish').projectDir = file("$root${File.separator}rish")
-
 include ':shared'
 project(':shared').projectDir = file("$root${File.separator}shared")
 
